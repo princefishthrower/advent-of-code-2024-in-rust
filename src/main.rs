@@ -27,15 +27,13 @@ mod utils;
 
 fn main() {
     // Day 1
-    if let Err(e) = day_1::day_1::run_a() {
-        eprintln!("Error running day 1 part A: {}", e);
-    }
-    if let Err(e) = day_1::day_1::run_b() {
-        eprintln!("Error running day 1 part B: {}", e);
-    }
-
-    // TODO: Uncomment as we implement each day
-    /*
+    // if let Err(e) = day_1::day_1::run_a() {
+    //     eprintln!("Error running day 1 part A: {}", e);
+    // }
+    // if let Err(e) = day_1::day_1::run_b() {
+    //     eprintln!("Error running day 1 part B: {}", e);
+    // }
+    
     // Day 2
     if let Err(e) = day_2::day_2::run_a() {
         eprintln!("Error running day 2 part A: {}", e);
@@ -43,5 +41,4 @@ fn main() {
     if let Err(e) = day_2::day_2::run_b() {
         eprintln!("Error running day 2 part B: {}", e);
     }
-    */
 }
