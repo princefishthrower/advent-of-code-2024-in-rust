@@ -9,3 +9,5 @@ fn main() {
         eprintln!("Error running day 8 part A: {}", e);
     }
 }
+
+
