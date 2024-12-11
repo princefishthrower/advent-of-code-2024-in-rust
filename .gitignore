@@ -3,3 +3,5 @@
 
 # all puzzle input
 *.txt
+
+.DS_Store
