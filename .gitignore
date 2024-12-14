@@ -5,3 +5,7 @@
 *.txt
 
 .DS_Store
+
+# ah the drone frames :)
+*.png
+drone_simulation.mp4

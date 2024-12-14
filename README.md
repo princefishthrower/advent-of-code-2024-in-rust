@@ -33,3 +33,5 @@ Note: To run these solutions, you'll need an `input.txt` in each given day folde
 [Day 11](./src/day_11/day_11.rs)
 
 [Day 12](./src/day_12/day_12.rs)
+
+[Day 13](./src/day_13/day_13.rs)
