@@ -79,8 +79,6 @@ pub fn run_b() -> std::io::Result<()> {
     let mut possible_positions = Vec::new();
     // Now only test positions adjacent to the original path
     for pos in adjacent_positions {
-        // log what we're testing
-        println!("Testing obstacle at position {:?}", pos);
         // Place obstacle
         input[pos.x as usize][pos.y as usize] = '#';
 
@@ -94,7 +92,6 @@ pub fn run_b() -> std::io::Result<()> {
             &mut history,
             &mut states,
         ) {
-            println!("Obstacle at position {:?} creates a loop!", pos);
             possible_positions.push(pos.clone());
         }
 

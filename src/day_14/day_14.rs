@@ -185,9 +185,6 @@ pub fn run_a() -> std::io::Result<()> {
         simulate_drone_movement(&mut drones);
     }
 
-    log_grid_snapshot(&drones);
-    log_quadrant_snapshot(&drones);
-
     // calculate safety factor
     let safety_factor = calculate_safety_factor(&drones);
 
@@ -397,7 +394,7 @@ fn generate_frame_images(drones: &mut Vec<Drone>, output_dir: &PathBuf, num_fram
         }
         
         if frame % 100 == 0 {
-            println!("Generated frame {}", frame);
+            // println!("Generated frame {}", frame);
         }
     });
     

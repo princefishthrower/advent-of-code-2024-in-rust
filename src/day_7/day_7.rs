@@ -38,13 +38,13 @@ fn run_for_given_operators(operators: &[&str]) -> std::io::Result<()> {
         let operator_combinations = generate_all_operator_combinations(&operators, num_operators);
         let mut found = false;
 
-        println!("\nTrying to find: {} with numbers {:?}", solution.solution, solution.numbers);
+        // println!("\nTrying to find: {} with numbers {:?}", solution.solution, solution.numbers);
         
         for op_combo in operator_combinations {
             let (result, expression) = evaluate_expression(&solution.numbers, &op_combo);
             
             if result == solution.solution {
-                println!("Found: {} = {}", expression, result);
+                // println!("Found: {} = {}", expression, result);
                 true_solutions.push(solution.solution);  // Note: pushing solution.solution, not result
                 found = true;
                 break;
@@ -52,14 +52,12 @@ fn run_for_given_operators(operators: &[&str]) -> std::io::Result<()> {
         }
         
         if !found {
-            println!("NO SOLUTION FOUND for {}: {:?}", solution.solution, solution.numbers);
+            // println!("NO SOLUTION FOUND for {}: {:?}", solution.solution, solution.numbers);
         }
     }
 
     let sum = true_solutions.iter().sum::<i64>();
     println!("\nSum of true solutions: {}", sum);
-    println!("Solutions found: {:?}", true_solutions);
-
     Ok(())
 }
 

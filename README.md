@@ -1,5 +1,7 @@
 # Advent of Code 2024 in Rust
 
+![Aww yeah, all 50 stars!](./img/aoc.png)
+
 This repository contains my solutions for the Advent of Code 2024 in Rust. 
 
 Each day of AoC is organized into its own folder with the input and the solution file. 
@@ -35,3 +37,27 @@ Note: To run these solutions, you'll need an `input.txt` in each given day folde
 [Day 12](./src/day_12/day_12.rs)
 
 [Day 13](./src/day_13/day_13.rs)
+
+[Day 14](./src/day_14/day_14.rs)
+
+[Day 15](./src/day_15/day_15.rs)
+
+[Day 16](./src/day_16/day_16.rs)
+
+[Day 17](./src/day_17/day_17.rs)
+
+[Day 18](./src/day_18/day_18.rs)
+
+[Day 19](./src/day_19/day_19.rs)
+
+[Day 20](./src/day_20/day_20.rs)
+
+[Day 21](./src/day_21/day_21.rs)
+
+[Day 22](./src/day_22/day_22.rs)
+
+[Day 23](./src/day_23/day_23.rs)
+
+[Day 24](./src/day_24/day_24.rs)
+
+[Day 25](./src/day_25/day_25.rs)

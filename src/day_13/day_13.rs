@@ -124,39 +124,50 @@ fn min_tokens_needed(entries: Vec<Entry>) -> i32 {
 // Part 2 specific functions
 const OFFSET: i64 = 10_000_000_000_000;
 
-fn find_valid_games_part2(entries: Vec<Entry>) -> Vec<Entry> {
-    // The same combinations that worked in part 1 will work here
-    // just with scaled up number of presses
-    find_valid_games(entries)
-}
-
 fn min_tokens_needed_part2(entries: Vec<Entry>) -> i64 {
     entries.into_iter()
         .map(|entry| {
-            let (a_x, a_y) = entry.button_a;
-            let (b_x, b_y) = entry.button_b;
-            let (p_x, p_y) = entry.prize;
+            let (x1, y1) = (entry.button_a.0 as f64, entry.button_a.1 as f64);
+            let (x2, y2) = (entry.button_b.0 as f64, entry.button_b.1 as f64);
+            let (x3, y3) = (
+                (entry.prize.0 as f64) + OFFSET as f64,
+                (entry.prize.1 as f64) + OFFSET as f64
+            );
             
-            let mut min_tokens = i64::MAX;
+            // Solve the system of equations:
+            // x1 * a + x2 * b = x3
+            // y1 * a + y2 * b = y3
             
-            // Calculate scale factor more precisely using floating point
-            let target_x = OFFSET + p_x as i64;
-            let scale_factor = (target_x as f64 / p_x as f64).ceil() as i64;
+            let a = (x3 * (x2 - y2) - x2 * (x3 - y3)) / (x1 * (x2 - y2) + x2 * (y1 - x1));
+            let b = (x3 - x1 * a) / x2;
             
-            // Find base solution with small numbers
-            for i in 0..=100 {
-                for j in 0..=100 {
-                    if i * a_x + j * b_x == p_x && i * a_y + j * b_y == p_y {
-                        // Scale up the solution and round up to ensure we reach target
-                        let scaled_i = i as i64 * scale_factor;
-                        let scaled_j = j as i64 * scale_factor;
-                        let tokens = scaled_i * 3 + scaled_j;
-                        min_tokens = min_tokens.min(tokens);
-                    }
-                }
+            // Check if we have integer solutions
+            if a.floor() == a && b.floor() == b && a >= 0.0 && b >= 0.0 {
+                // Calculate tokens needed: 3 tokens for button A, 1 token for button B
+                (a * 3.0 + b).round() as i64
+            } else {
+                0 // Invalid solution
             }
-            
-            min_tokens
         })
         .sum()
+}
+
+// You'll also need to modify these related functions:
+
+fn find_valid_games_part2(entries: Vec<Entry>) -> Vec<Entry> {
+    entries.into_iter()
+        .filter(|entry| {
+            let (x1, y1) = (entry.button_a.0 as f64, entry.button_a.1 as f64);
+            let (x2, y2) = (entry.button_b.0 as f64, entry.button_b.1 as f64);
+            let (x3, y3) = (
+                (entry.prize.0 as f64) + OFFSET as f64,
+                (entry.prize.1 as f64) + OFFSET as f64
+            );
+            
+            let a = (x3 * (x2 - y2) - x2 * (x3 - y3)) / (x1 * (x2 - y2) + x2 * (y1 - x1));
+            let b = (x3 - x1 * a) / x2;
+            
+            a.floor() == a && b.floor() == b && a >= 0.0 && b >= 0.0
+        })
+        .collect()
 }
