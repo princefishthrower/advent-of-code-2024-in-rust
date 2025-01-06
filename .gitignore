@@ -7,5 +7,5 @@
 .DS_Store
 
 # ah the drone frames :)
-*.png
+drone_frames
 drone_simulation.mp4
